@@ -1027,6 +1027,103 @@ input[type="color"]::-moz-color-swatch {
         gap: 5px;
     }
 }
+/* ===== 색상 선택기 실제 색상 표시 복구 ===== */
+
+input[type="color"] {
+    appearance: auto !important;
+    -webkit-appearance: auto !important;
+    background: transparent !important;
+    padding: 2px !important;
+    cursor: pointer;
+}
+
+/* 페어 대표 색상 */
+.color-palette .swatch {
+    display: flex !important;
+    width: 29px !important;
+    height: 29px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border: 1px solid #c9d1dd !important;
+    border-radius: 50% !important;
+    background: #fff !important;
+}
+
+.color-palette .swatch input[type="color"] {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 50% !important;
+}
+
+/* A/B 색상 선택 버튼 */
+.palette-options label {
+    display: flex !important;
+    width: 30px !important;
+    height: 30px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border: 1px solid #d8dee7 !important;
+    border-radius: 50% !important;
+    background: #fff !important;
+}
+
+.palette-options input[type="color"] {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 50% !important;
+}
+
+/* 브라우저 내부 색상 미리보기 */
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0 !important;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: none !important;
+    border-radius: 50% !important;
+}
+
+input[type="color"]::-moz-color-swatch {
+    border: none !important;
+    border-radius: 50% !important;
+}
+
+/* HEX 코드 입력칸 */
+.hex-control {
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    min-width: 0 !important;
+}
+
+.hex-input {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 38px !important;
+    padding: 8px 10px !important;
+    margin: 7px 0 !important;
+    box-sizing: border-box !important;
+    color: #354354 !important;
+    background: #fff !important;
+    border: 1px solid #cbd3df !important;
+    border-radius: 5px !important;
+    font-size: 13px !important;
+    line-height: normal !important;
+}
+
 </style>
 </head>
 
@@ -1895,37 +1992,7 @@ window.addEventListener('load',() => {
     }
 });
 
-/* 색상 코드 입력 ↔ 색상 선택 동기화 */
-document.querySelectorAll('.palette-row').forEach(row => {
-    const colors = [...row.querySelectorAll('input[type="color"]')];
-    const hex = row.querySelector('.hex-input');
 
-    if (!hex || !colors.length) return;
-
-    function updateHex() {
-        hex.value = colors.map(color => color.value.toUpperCase()).join(', ');
-    }
-
-    colors.forEach(color => {
-        color.addEventListener('input', updateHex);
-    });
-
-    hex.addEventListener('change', () => {
-        const values = hex.value.match(/#[0-9a-fA-F]{6}/g);
-
-        if (!values) return;
-
-        values.forEach((value, index) => {
-            if (colors[index]) {
-                colors[index].value = value;
-            }
-        });
-
-        updateHex();
-    });
-
-    updateHex();
-});
 </script>
 
 </body>
