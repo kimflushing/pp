@@ -997,7 +997,112 @@ gap: 8px;
 }
 
 }
+/* ===== 전체 페어틀 가로형 레이아웃 수정 ===== */
 
+/* 모바일에서도 페어틀의 가로 폭을 유지 */
+html {
+overflow-x: auto;
+}
+
+body {
+min-width: 0;
+overflow-x: auto;
+}
+
+/* 페어틀을 휴대폰 폭에 억지로 맞추지 않기 */
+#sheet {
+width: 1800px;
+max-width: none;
+margin: 20px auto 40px;
+padding: 28px;
+overflow: visible;
+}
+
+/* 캐릭터 A / 관계성 / 캐릭터 B 가로 3열 */
+.top-grid {
+display: grid !important;
+grid-template-columns: minmax(0, 1fr) minmax(0, .88fr) minmax(0, 1fr) !important;
+gap: 16px;
+align-items: start;
+}
+
+/* 아래 자료도 가로 3열 */
+.bottom-grid {
+display: grid !important;
+grid-template-columns: minmax(0, 1.15fr) minmax(0, .9fr) minmax(0, 1.15fr) !important;
+gap: 16px;
+align-items: start;
+}
+
+/* 나나곰 A / B 가로 2열 */
+.nanagom-grid {
+display: grid !important;
+grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+gap: 14px;
+}
+
+/* 각 영역이 불필요하게 좁아지지 않게 */
+.panel,
+.assets-panel,
+.nanagom-card {
+min-width: 0;
+}
+
+/* 전신 MD 이미지 공간 */
+.nanagom-upload {
+height: 420px;
+min-height: 420px;
+}
+
+/* 휴대폰에서는 전체 페어틀을 가로로 스크롤 */
+@media (max-width: 800px) {
+#sheet {
+width: 1800px;
+max-width: none;
+margin: 10px 0 30px;
+padding: 24px;
+}
+
+.sheet-header {
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 15px;
+}
+.brand,
+.header-meta {
+    text-align: initial;
+}
+.header-meta {
+    justify-content: flex-end;
+}
+.main-title input {
+    font-size: 38px;
+}
+.top-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, .88fr) minmax(0, 1fr) !important;
+    gap: 16px;
+}
+.bottom-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .9fr) minmax(0, 1.15fr) !important;
+    gap: 16px;
+}
+.profile-top {
+    grid-template-columns: 40% 1fr;
+}
+.character-b .profile-top {
+    grid-template-columns: 1fr 40%;
+}
+.portrait {
+    min-height: 270px;
+}
+.nanagom-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+.nanagom-upload {
+    height: 420px;
+    min-height: 420px;
+}
+
+}
 </style>
 </head>
 
