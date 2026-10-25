@@ -1123,7 +1123,94 @@ input[type="color"]::-moz-color-swatch {
     font-size: 13px !important;
     line-height: normal !important;
 }
+/* A/B 자료 이미지 영역: 2000 × 2000 정사각형 */
+.bottom-grid > .assets-panel:first-child .asset-grid,
+.bottom-grid > .assets-panel:last-child .asset-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 
+.bottom-grid > .assets-panel:first-child .upload-box,
+.bottom-grid > .assets-panel:last-child .upload-box {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    min-height: 0;
+    height: auto;
+}
+
+/* 기타 자료 이미지도 정사각형 */
+.bottom-grid > .assets-panel:first-child .extra-grid .upload-box,
+.bottom-grid > .assets-panel:last-child .extra-grid .upload-box {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    min-height: 0;
+    height: auto;
+}
+
+/* 이미지 전체가 보이도록 유지 */
+.bottom-grid > .assets-panel .upload-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* A와 B 자료칸을 좌우로 배치 */
+.bottom-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+/* 가운데 색상 코드 패널 숨기기 */
+.bottom-grid > .assets-panel:nth-child(2) {
+    display: none !important;
+}
+/* 관계성 영역의 KEY COLOR 제거 */
+.relationship > div:has(> .section-title + .color-palette) {
+    display: none !important;
+}
+/* 색상 코드 패널 제거 */
+.bottom-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.bottom-grid > .assets-panel:nth-child(2) {
+    display: none !important;
+}
+
+/* A와 B 자료칸을 양쪽에 넓게 배치 */
+.bottom-grid > .assets-panel:first-child,
+.bottom-grid > .assets-panel:last-child {
+    width: 100%;
+    min-width: 0;
+}
+
+/* 자료 이미지가 잘리지 않도록 유지 */
+.upload-box img {
+    object-fit: contain !important;
+}
+
+/* 나나곰은 기존의 세로형 크기로 복구 */
+.nanagom-upload {
+    height: 620px !important;
+    min-height: 620px !important;
+    padding: 8px !important;
+}
+
+.nanagom-upload img {
+    object-fit: contain !important;
+    object-position: center !important;
+    padding: 8px !important;
+}
+
+@media (max-width: 800px) {
+    .bottom-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .nanagom-upload {
+        height: 620px !important;
+        min-height: 620px !important;
+    }
+}
 </style>
 </head>
 
