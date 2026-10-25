@@ -840,6 +840,193 @@ body {
         box-shadow:none;
     }
 }
+
+/* =========================================
+   PAIR ARCHIVE FIX — 이미지 및 색상 입력칸
+   ========================================= */
+
+/* 모든 이미지 칸의 크기와 이미지 비율 통일 */
+.image-slot {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* 대표 이미지 */
+.portrait {
+    min-width: 0;
+    min-height: 270px;
+}
+
+/* SD, LD, 기타 자료 이미지 */
+.upload-box {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* 나나곰 A/B 이미지 */
+.nanagom-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: start;
+    gap: 20px;
+}
+
+.nanagom-card {
+    min-width: 0;
+    width: 100%;
+}
+
+.nanagom-upload {
+    position: relative;
+    width: 100%;
+    height: 480px !important;
+    min-height: 480px !important;
+    aspect-ratio: auto !important;
+    padding: 0;
+    overflow: hidden;
+    background: #fafbfc;
+}
+
+/* 모든 이미지가 찌그러지지 않도록 통일 */
+.portrait img,
+.upload-box img,
+.nanagom-upload img {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    margin: 0 !important;
+    padding: 8px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+}
+
+/* 이미지 안내 문구는 이미지가 없을 때만 표시 */
+.image-slot img ~ .placeholder {
+    display: none !important;
+}
+
+/* 색상 선택칸이 실제로 보이도록 수정 */
+input[type="color"] {
+    display: inline-block !important;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    padding: 3px !important;
+    margin: 0 !important;
+    border: 1px solid #cbd3df !important;
+    border-radius: 7px !important;
+    background: #ffffff !important;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* 브라우저별 색상 미리보기 */
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0 !important;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: none !important;
+    border-radius: 4px !important;
+}
+
+input[type="color"]::-moz-color-swatch {
+    border: none !important;
+    border-radius: 4px !important;
+}
+
+/* 페어 키 컬러 */
+.color-palette {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.swatch {
+    display: inline-flex !important;
+    width: 38px !important;
+    height: 38px !important;
+    align-items: center;
+    justify-content: center;
+    overflow: visible !important;
+    border: none !important;
+    border-radius: 7px !important;
+    background: transparent !important;
+}
+
+.swatch input[type="color"] {
+    width: 36px !important;
+    height: 36px !important;
+}
+
+/* A/B 색상 팔레트 */
+.palette-options {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.palette-options label {
+    display: inline-flex !important;
+    width: 36px !important;
+    height: 36px !important;
+    align-items: center;
+    justify-content: center;
+    overflow: visible !important;
+    border: none !important;
+    border-radius: 7px !important;
+    background: transparent !important;
+}
+
+.palette-options input[type="color"] {
+    width: 34px !important;
+    height: 34px !important;
+}
+
+/* 색상 코드 입력칸 */
+.hex-input {
+    display: block !important;
+    width: 100% !important;
+    min-height: 34px;
+    margin-top: 8px;
+    color: #354354;
+    background: #ffffff;
+    border: 1px solid #cbd3df;
+    border-radius: 5px;
+}
+
+/* 휴대폰에서도 A/B 이미지 나란히 */
+@media (max-width: 800px) {
+    .nanagom-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px;
+    }
+
+    .nanagom-upload {
+        height: 320px !important;
+        min-height: 320px !important;
+    }
+
+    .portrait {
+        min-height: 220px;
+    }
+
+    .palette-options {
+        gap: 5px;
+    }
+}
 </style>
 </head>
 
@@ -1706,6 +1893,38 @@ window.addEventListener('load',() => {
     if (localStorage.getItem(STORAGE_KEY)) {
         loadData();
     }
+});
+
+/* 색상 코드 입력 ↔ 색상 선택 동기화 */
+document.querySelectorAll('.palette-row').forEach(row => {
+    const colors = [...row.querySelectorAll('input[type="color"]')];
+    const hex = row.querySelector('.hex-input');
+
+    if (!hex || !colors.length) return;
+
+    function updateHex() {
+        hex.value = colors.map(color => color.value.toUpperCase()).join(', ');
+    }
+
+    colors.forEach(color => {
+        color.addEventListener('input', updateHex);
+    });
+
+    hex.addEventListener('change', () => {
+        const values = hex.value.match(/#[0-9a-fA-F]{6}/g);
+
+        if (!values) return;
+
+        values.forEach((value, index) => {
+            if (colors[index]) {
+                colors[index].value = value;
+            }
+        });
+
+        updateHex();
+    });
+
+    updateHex();
 });
 </script>
 
