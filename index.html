@@ -744,6 +744,88 @@ input[type="color"] {
         box-shadow: none;
     }
 }
+
+/* ===== WIDE LAYOUT & NANAGOM FULL-BODY MD ===== */
+
+/* 전체 페어틀을 가로로 넓게 */
+#sheet {
+    width: 1800px;
+    max-width: 100%;
+    padding: 25px;
+}
+
+/* 캐릭터 A / 관계성 / 캐릭터 B 가로 배치 */
+.top-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, .85fr) minmax(0, 1fr);
+    gap: 14px;
+}
+
+/* 아래 자료도 세로로 늘어지지 않도록 가로 배치 */
+.bottom-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, .85fr) minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+}
+
+/* 나나곰 이미지 영역을 크게 */
+.nanagom-card {
+    grid-column: 1 / -1;
+    min-width: 0;
+    margin-top: 10px;
+    overflow: hidden;
+    border: 1px solid #dce2ea;
+    border-radius: 8px;
+}
+
+.nanagom-card .asset-title {
+    padding: 10px 12px;
+    font-size: 12px;
+}
+
+.nanagom-card .upload-box {
+    min-height: 360px;
+    height: 360px;
+    width: 100%;
+    padding: 12px;
+    background: #fafbfc;
+}
+
+.nanagom-card .upload-box img {
+    object-fit: contain;
+    padding: 8px;
+}
+
+.nanagom-card .placeholder {
+    font-size: 12px;
+    line-height: 2;
+}
+
+.nanagom-card .placeholder strong {
+    font-size: 32px;
+}
+
+/* 업로드 영역을 눌러도 전체 이미지가 잘 보이도록 */
+.nanagom-card .upload-box {
+    cursor: pointer;
+}
+
+/* 휴대폰에서는 자료를 읽기 편하게 조정 */
+@media (max-width: 800px) {
+    #sheet {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .top-grid,
+    .bottom-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .nanagom-card .upload-box {
+        height: 320px;
+        min-height: 320px;
+    }
+}
 </style>
 </head>
 
