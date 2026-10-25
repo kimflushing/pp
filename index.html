@@ -91,7 +91,7 @@ button {
 }
 
 .editor-settings {
-    width: min(1100px, calc(100% - 24px));
+    width: min(1400px, calc(100% - 24px));
     margin: 18px auto;
     padding: 16px;
     background: white;
@@ -138,10 +138,10 @@ input[type="color"] {
 /* MAIN SHEET */
 
 #sheet {
-    width: 1500px;
-    max-width: 100%;
+    width: 1800px;
+    max-width: calc(100% - 24px);
     margin: 20px auto 40px;
-    padding: 25px 22px 22px;
+    padding: 28px;
     background: var(--paper);
     border: 1px solid #d9dfe8;
     box-shadow: 0 5px 30px #24344b0b;
@@ -229,14 +229,14 @@ input[type="color"] {
 
 .top-grid {
     display: grid;
-    grid-template-columns: 1fr .96fr 1fr;
-    gap: 12px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, .88fr) minmax(0, 1fr);
+    gap: 16px;
     align-items: stretch;
 }
 
 .panel {
     min-width: 0;
-    padding: 12px;
+    padding: 14px;
     border: 1px solid var(--line);
     border-radius: 8px;
     background: white;
@@ -293,7 +293,7 @@ input[type="color"] {
     position: relative;
     display: flex;
     min-width: 0;
-    min-height: 255px;
+    min-height: 270px;
     align-items: center;
     justify-content: center;
     overflow: hidden;
@@ -338,7 +338,7 @@ input[type="color"] {
 
 .field-row {
     display: grid;
-    grid-template-columns: 78px 1fr;
+    grid-template-columns: 85px 1fr;
     min-height: 34px;
     border: 1px solid #e0e5ec;
     border-radius: 5px;
@@ -423,7 +423,7 @@ input[type="color"] {
     display: flex;
     flex-direction: column;
     gap: 9px;
-    padding: 12px;
+    padding: 14px;
 }
 
 .center-heading {
@@ -525,13 +525,14 @@ input[type="color"] {
 
 .bottom-grid {
     display: grid;
-    grid-template-columns: 1.15fr 1fr 1.15fr;
-    gap: 12px;
-    margin-top: 12px;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .9fr) minmax(0, 1.15fr);
+    gap: 16px;
+    margin-top: 16px;
+    align-items: start;
 }
 
 .assets-panel {
-    padding: 11px;
+    padding: 12px;
 }
 
 .asset-grid {
@@ -611,7 +612,7 @@ input[type="color"] {
 
 .palette-row {
     display: grid;
-    grid-template-columns: 20px 1fr;
+    grid-template-columns: 24px 1fr;
     align-items: center;
     gap: 8px;
     margin: 10px 0;
@@ -666,9 +667,120 @@ input[type="color"] {
     min-height: 100px;
 }
 
+/* NANAGOM FULL-BODY MD */
+
+.nanagom-section {
+    margin-top: 16px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: white;
+}
+
+.nanagom-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 11px 13px;
+    border-radius: 6px;
+    background: var(--soft);
+}
+
+.nanagom-heading strong {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.nanagom-heading span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.nanagom-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 14px;
+}
+
+.nanagom-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #dce2ea;
+    border-radius: 8px;
+}
+
+.nanagom-card .asset-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 14px;
+    font-size: 12px;
+}
+
+.nanagom-card.a-nanagom .asset-title {
+    border-left: 4px solid var(--accent-a);
+}
+
+.nanagom-card.b-nanagom .asset-title {
+    border-left: 4px solid var(--accent-b);
+}
+
+.nanagom-card .asset-title small {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.nanagom-upload {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 390px;
+    min-height: 390px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 18px;
+    background: #fafbfc;
+    cursor: pointer;
+}
+
+.nanagom-upload img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 12px;
+}
+
+.nanagom-upload .placeholder {
+    color: #9ba7b8;
+    text-align: center;
+    font-size: 12px;
+    line-height: 2;
+}
+
+.nanagom-upload .placeholder strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.nanagom-note {
+    padding: 9px 12px;
+    border-top: 1px solid #e5e9ef;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.7;
+}
+
 .sheet-footer {
-    margin-top: 15px;
-    padding-top: 10px;
+    margin-top: 16px;
+    padding-top: 12px;
     border-top: 1px solid var(--line);
     color: var(--muted);
     text-align: center;
@@ -677,12 +789,56 @@ input[type="color"] {
     letter-spacing: 3px;
 }
 
+/* TABLET AND MOBILE */
+
+@media (max-width: 1050px) {
+    #sheet {
+        width: 100%;
+        max-width: calc(100% - 16px);
+        padding: 16px;
+    }
+
+    .top-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, .9fr) minmax(0, 1fr);
+        gap: 8px;
+    }
+
+    .bottom-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, .9fr) minmax(0, 1fr);
+        gap: 8px;
+    }
+
+    .panel {
+        padding: 9px;
+    }
+
+    .field-row {
+        grid-template-columns: 65px 1fr;
+    }
+
+    .field-row label,
+    .field-row input {
+        padding: 5px;
+        font-size: 10px;
+    }
+
+    .nanagom-upload {
+        height: 330px;
+        min-height: 330px;
+    }
+}
+
 @media (max-width: 800px) {
     #sheet {
         width: 100%;
+        max-width: 100%;
         padding: 12px;
         margin-top: 10px;
         overflow: visible;
+    }
+
+    .editor-settings {
+        width: calc(100% - 20px);
     }
 
     .sheet-header {
@@ -690,7 +846,8 @@ input[type="color"] {
         gap: 10px;
     }
 
-    .brand, .header-meta {
+    .brand,
+    .header-meta {
         justify-content: center;
         text-align: center;
     }
@@ -700,7 +857,11 @@ input[type="color"] {
     }
 
     .top-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .panel {
+        padding: 12px;
     }
 
     .profile-top {
@@ -720,11 +881,26 @@ input[type="color"] {
     }
 
     .bottom-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .upload-box {
         min-height: 145px;
+    }
+
+    .nanagom-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .nanagom-upload {
+        height: 360px;
+        min-height: 360px;
+    }
+
+    .toolbar-title {
+        width: 100%;
+        margin: 0 0 4px;
+        text-align: center;
     }
 }
 
@@ -733,97 +909,16 @@ input[type="color"] {
         background: white;
     }
 
-    .toolbar, .editor-settings {
+    .toolbar,
+    .editor-settings {
         display: none !important;
     }
 
     #sheet {
-        width: 1500px;
+        width: 1800px;
         max-width: none;
         margin: 0;
         box-shadow: none;
-    }
-}
-
-/* ===== WIDE LAYOUT & NANAGOM FULL-BODY MD ===== */
-
-/* 전체 페어틀을 가로로 넓게 */
-#sheet {
-    width: 1800px;
-    max-width: 100%;
-    padding: 25px;
-}
-
-/* 캐릭터 A / 관계성 / 캐릭터 B 가로 배치 */
-.top-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, .85fr) minmax(0, 1fr);
-    gap: 14px;
-}
-
-/* 아래 자료도 세로로 늘어지지 않도록 가로 배치 */
-.bottom-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, .85fr) minmax(0, 1fr);
-    gap: 14px;
-    align-items: start;
-}
-
-/* 나나곰 이미지 영역을 크게 */
-.nanagom-card {
-    grid-column: 1 / -1;
-    min-width: 0;
-    margin-top: 10px;
-    overflow: hidden;
-    border: 1px solid #dce2ea;
-    border-radius: 8px;
-}
-
-.nanagom-card .asset-title {
-    padding: 10px 12px;
-    font-size: 12px;
-}
-
-.nanagom-card .upload-box {
-    min-height: 360px;
-    height: 360px;
-    width: 100%;
-    padding: 12px;
-    background: #fafbfc;
-}
-
-.nanagom-card .upload-box img {
-    object-fit: contain;
-    padding: 8px;
-}
-
-.nanagom-card .placeholder {
-    font-size: 12px;
-    line-height: 2;
-}
-
-.nanagom-card .placeholder strong {
-    font-size: 32px;
-}
-
-/* 업로드 영역을 눌러도 전체 이미지가 잘 보이도록 */
-.nanagom-card .upload-box {
-    cursor: pointer;
-}
-
-/* 휴대폰에서는 자료를 읽기 편하게 조정 */
-@media (max-width: 800px) {
-    #sheet {
-        width: 100%;
-        padding: 12px;
-    }
-
-    .top-grid,
-    .bottom-grid {
-        grid-template-columns: minmax(0, 1fr);
-    }
-
-    .nanagom-card .upload-box {
-        height: 320px;
-        min-height: 320px;
     }
 }
 </style>
@@ -869,7 +964,8 @@ input[type="color"] {
     </div>
     <div class="small-help">
         모든 입력란에 직접 글을 작성할 수 있어요. 이미지 칸을 누르면 그림을 업로드할 수 있습니다.<br>
-        저장하기는 현재 브라우저에 저장하며, 백업 파일 저장은 다른 기기로 옮길 때 사용할 수 있어요.
+        저장하기는 현재 브라우저에 저장하며, 백업 파일 저장은 다른 기기로 옮길 때 사용할 수 있어요.<br>
+        이미지 칸에서 마우스 오른쪽 버튼을 누르면 업로드한 이미지를 삭제할 수 있습니다.
     </div>
 </div>
 
@@ -911,10 +1007,10 @@ input[type="color"] {
                 <div class="profile-fields">
                     <div class="field-row"><label>이름</label><input data-save placeholder="이름을 입력하세요."></div>
                     <div class="field-row"><label>영문명</label><input data-save placeholder="Foreign name"></div>
-                    <div class="field-row"><label>나이 /키/ 성별</label><input data-save placeholder="나이 / 성별 입력"></div>
+                    <div class="field-row"><label>나이 /키/ 성별</label><input data-save placeholder="나이 /키/ 성별 입력"></div>
                     <div class="field-row"><label>생일</label><input data-save placeholder="생일 입력"></div>
                     <div class="field-row"><label>직업 / 신분</label><input data-save placeholder="직업 / 신분 입력"></div>
-                    <div class="field-row"><label>소속</label><input data-save placeholder="소속 / 거주지 입력"></div>
+                    <div class="field-row"><label>소속</label><input data-save placeholder="소속 입력"></div>
                 </div>
             </div>
 
@@ -1037,10 +1133,10 @@ input[type="color"] {
                 <div class="profile-fields">
                     <div class="field-row"><label>이름</label><input data-save placeholder="이름을 입력하세요."></div>
                     <div class="field-row"><label>영문명</label><input data-save placeholder="Foreign name"></div>
-                    <div class="field-row"><label>나이 /키/ 성별</label><input data-save placeholder="나이 / 성별 입력"></div>
+                    <div class="field-row"><label>나이 /키/ 성별</label><input data-save placeholder="나이 /키/ 성별 입력"></div>
                     <div class="field-row"><label>생일</label><input data-save placeholder="생일 입력"></div>
                     <div class="field-row"><label>직업 / 신분</label><input data-save placeholder="직업 / 신분 입력"></div>
-                    <div class="field-row"><label>소속 </label><input data-save placeholder="소속 / 거주지 입력"></div>
+                    <div class="field-row"><label>소속</label><input data-save placeholder="소속 입력"></div>
                 </div>
             </div>
 
@@ -1078,7 +1174,6 @@ input[type="color"] {
             <div class="panel-heading">A의 SD / LD / 기타 자료</div>
 
             <div class="asset-grid">
-
                 <div class="asset-card">
                     <div class="asset-title">SD</div>
                     <div class="upload-box image-slot" data-image="a-sd">
@@ -1094,29 +1189,23 @@ input[type="color"] {
                         <input class="image-input" type="file" accept="image/*">
                     </div>
                 </div>
-
             </div>
 
             <div class="section-box">
                 <div class="section-title">A의 기타 자료</div>
                 <div class="extra-grid">
-
-                    <!-- A의 나나곰 -->
-                    <div class="upload-box image-slot" data-image="a-nanagom">
-                        <div class="placeholder"><strong>＋</strong>나나곰</div>
+                    <div class="upload-box image-slot" data-image="a-extra-1">
+                        <div class="placeholder"><strong>＋</strong>자료 1</div>
                         <input class="image-input" type="file" accept="image/*">
                     </div>
-
                     <div class="upload-box image-slot" data-image="a-extra-2">
                         <div class="placeholder"><strong>＋</strong>자료 2</div>
                         <input class="image-input" type="file" accept="image/*">
                     </div>
-
                     <div class="upload-box image-slot" data-image="a-extra-3">
                         <div class="placeholder"><strong>＋</strong>자료 3</div>
                         <input class="image-input" type="file" accept="image/*">
                     </div>
-
                 </div>
             </div>
         </section>
@@ -1166,7 +1255,6 @@ input[type="color"] {
             <div class="panel-heading">B의 SD / LD / 기타 자료</div>
 
             <div class="asset-grid">
-
                 <div class="asset-card">
                     <div class="asset-title">SD</div>
                     <div class="upload-box image-slot" data-image="b-sd">
@@ -1182,34 +1270,87 @@ input[type="color"] {
                         <input class="image-input" type="file" accept="image/*">
                     </div>
                 </div>
-
             </div>
 
             <div class="section-box">
                 <div class="section-title">B의 기타 자료</div>
                 <div class="extra-grid">
-
-                    <!-- B의 나나곰 -->
-                    <div class="upload-box image-slot" data-image="b-nanagom">
-                        <div class="placeholder"><strong>＋</strong>나나곰</div>
+                    <div class="upload-box image-slot" data-image="b-extra-1">
+                        <div class="placeholder"><strong>＋</strong>자료 1</div>
                         <input class="image-input" type="file" accept="image/*">
                     </div>
-
                     <div class="upload-box image-slot" data-image="b-extra-2">
                         <div class="placeholder"><strong>＋</strong>자료 2</div>
                         <input class="image-input" type="file" accept="image/*">
                     </div>
-
                     <div class="upload-box image-slot" data-image="b-extra-3">
                         <div class="placeholder"><strong>＋</strong>자료 3</div>
                         <input class="image-input" type="file" accept="image/*">
                     </div>
-
                 </div>
             </div>
         </section>
 
     </div>
+
+    <!-- NANAGOM MD: A AND B SIDE BY SIDE -->
+
+    <section class="nanagom-section">
+        <div class="nanagom-heading">
+            <strong>NANAGOM MD</strong>
+            <span> 자료 — A와 B를 가로로 나란히 배치합니다.</span>
+        </div>
+
+        <div class="nanagom-grid">
+
+            <div class="nanagom-card a-nanagom">
+                <div class="asset-title">
+                    <span>A의 나나곰</span>
+                    <small>FULL-BODY MD</small>
+                </div>
+
+                <div class="nanagom-upload image-slot" data-image="a-nanagom">
+                    <div class="placeholder">
+                        <strong>＋</strong>
+                        A의 나나곰
+                        <br>
+                        클릭해서 이미지를 업로드하세요.
+                        <br>
+                        전신이 잘 보이도록 큰 이미지 칸을 준비했어요.
+                    </div>
+                    <input class="image-input" type="file" accept="image/*">
+                </div>
+
+                <div class="nanagom-note">
+                    A 캐릭터의 나나곰 이미지를 넣는 공간입니다.
+                </div>
+            </div>
+
+            <div class="nanagom-card b-nanagom">
+                <div class="asset-title">
+                    <span>B의 나나곰</span>
+                    <small>FULL-BODY MD</small>
+                </div>
+
+                <div class="nanagom-upload image-slot" data-image="b-nanagom">
+                    <div class="placeholder">
+                        <strong>＋</strong>
+                        B의 나나곰 이미지
+                        <br>
+                        클릭해서 이미지를 업로드하세요.
+                        <br>
+                        전신이 잘 보이도록 큰 이미지 칸을 준비했어요.
+                    </div>
+                    <input class="image-input" type="file" accept="image/*">
+                </div>
+
+                <div class="nanagom-note">
+                    B 캐릭터의 나나곰 이미지를 넣는 공간입니다.
+                </div>
+            </div>
+
+        </div>
+    </section>
 
     <footer class="sheet-footer">
         PAIR ARCHIVE — OC & DREAM PAIR
@@ -1256,7 +1397,7 @@ function getBondData() {
 
 function getProjectData() {
     return {
-        version: 1,
+        version: 2,
         fields: getFormData(),
         theme: getThemeData(),
         bonds: getBondData(),
@@ -1280,6 +1421,7 @@ function applyBonds(bonds) {
 
     bonds.forEach(item => {
         const input = document.querySelector('[data-bond="' + item.key + '"]');
+
         if (input) {
             input.value = item.value;
             updateBond(input);
@@ -1362,21 +1504,28 @@ function loadData() {
 }
 
 function exportJSON() {
-    const data = getProjectData();
-    const blob = new Blob(
-        [JSON.stringify(data)],
-        { type: 'application/json' }
-    );
+    try {
+        const data = getProjectData();
+        const blob = new Blob(
+            [JSON.stringify(data)],
+            { type: 'application/json' }
+        );
 
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
 
-    link.href = url;
-    link.download = 'pair-archive-backup.json';
-    link.click();
+        link.href = url;
+        link.download = 'pair-archive-backup.json';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
 
-    URL.revokeObjectURL(url);
-    setStatus('백업 파일을 다운로드했어요!');
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+        setStatus('백업 파일을 다운로드했어요!');
+    } catch (error) {
+        setStatus('백업 파일을 만들지 못했어요.');
+    }
 }
 
 function importJSON(file) {
@@ -1398,12 +1547,18 @@ function importJSON(file) {
         }
     };
 
+    reader.onerror = () => {
+        setStatus('파일을 읽을 수 없어요.');
+    };
+
     reader.readAsText(file);
 }
 
 document.getElementById('importFile').addEventListener('change', event => {
     const file = event.target.files[0];
+
     if (file) importJSON(file);
+
     event.target.value = '';
 });
 
@@ -1412,12 +1567,9 @@ document.getElementById('importFile').addEventListener('change', event => {
 document.querySelectorAll('.image-slot').forEach(box => {
     const input = box.querySelector('.image-input');
 
-    box.addEventListener('click', event => {
-        if (event.target.tagName === 'IMG') {
-            input.click();
-            return;
-        }
+    if (!input) return;
 
+    box.addEventListener('click', event => {
         if (event.target === input) return;
 
         input.click();
@@ -1440,7 +1592,14 @@ document.querySelectorAll('.image-slot').forEach(box => {
             setStatus('이미지를 추가했어요. 저장 버튼을 눌러 저장해 주세요.');
         };
 
+        reader.onerror = () => {
+            setStatus('이미지를 읽을 수 없어요. 다른 파일로 시도해 주세요.');
+        };
+
         reader.readAsDataURL(file);
+
+        /* 같은 이미지를 다시 선택해도 change 이벤트가 발생하도록 초기화 */
+        event.target.value = '';
     });
 
     box.addEventListener('contextmenu', event => {
@@ -1450,7 +1609,7 @@ document.querySelectorAll('.image-slot').forEach(box => {
             if (confirm('이 이미지를 삭제할까요?')) {
                 delete imageData[box.dataset.image];
                 showImage(box.dataset.image, '');
-                setStatus('이미지를 삭제했어요.');
+                setStatus('이미지를 삭제했어요. 저장 버튼을 누르면 변경 사항이 저장돼요.');
             }
         }
     });
@@ -1474,7 +1633,9 @@ function updateBond(input) {
         '[data-value="' + input.dataset.bond + '"]'
     );
 
-    if (output) output.textContent = input.value + '%';
+    if (output) {
+        output.textContent = input.value + '%';
+    }
 }
 
 document.querySelectorAll('[data-bond]').forEach(input => {
@@ -1499,13 +1660,17 @@ async function downloadPNG() {
             useCORS: true,
             logging: false,
             width: sheet.scrollWidth,
-            height: sheet.scrollHeight
+            height: sheet.scrollHeight,
+            windowWidth: Math.max(document.documentElement.clientWidth, sheet.scrollWidth),
+            windowHeight: Math.max(document.documentElement.clientHeight, sheet.scrollHeight)
         });
 
         const link = document.createElement('a');
         link.download = 'pair-archive.png';
         link.href = canvas.toDataURL('image/png');
+        document.body.appendChild(link);
         link.click();
+        link.remove();
 
         setStatus('완성된 페어틀을 PNG로 저장했어요!');
     } catch (error) {
@@ -1530,6 +1695,7 @@ function resetSheet() {
 
     document.querySelectorAll('[data-theme]').forEach(input => {
         input.value = input.defaultValue;
+
         document.documentElement.style.setProperty(
             '--' + input.dataset.theme,
             input.value
