@@ -921,6 +921,83 @@ input[type="color"] {
         box-shadow: none;
     }
 }
+
+/* NANAGOM MOBILE LAYOUT FIX */
+
+.nanagom-grid {
+display: grid !important;
+grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+gap: 14px;
+align-items: start;
+}
+
+.nanagom-card {
+min-width: 0;
+width: 100%;
+}
+
+.nanagom-upload {
+width: 100%;
+height: 420px;
+min-height: 420px;
+}
+
+.nanagom-upload img {
+object-fit: contain;
+}
+
+/* 작은 화면에서도 A와 B를 가로로 유지 */
+@media (max-width: 800px) {
+.nanagom-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+gap: 8px;
+}
+
+.nanagom-section {
+    padding: 8px;
+}
+.nanagom-heading {
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 9px;
+}
+.nanagom-heading strong {
+    font-size: 11px;
+}
+.nanagom-heading span {
+    font-size: 9px;
+}
+.nanagom-card .asset-title {
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px;
+    font-size: 10px;
+}
+.nanagom-card .asset-title small {
+    font-size: 8px;
+}
+.nanagom-upload {
+    height: 320px;
+    min-height: 320px;
+    padding: 5px;
+}
+.nanagom-upload img {
+    padding: 3px;
+}
+.nanagom-upload .placeholder {
+    font-size: 9px;
+    line-height: 1.7;
+}
+.nanagom-upload .placeholder strong {
+    font-size: 25px;
+}
+.nanagom-note {
+    padding: 6px;
+    font-size: 8px;
+}
+
+}
+
 </style>
 </head>
 
