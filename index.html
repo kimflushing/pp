@@ -1128,6 +1128,107 @@ padding: 24px;
 }
 
 }
+
+/* =====================================
+   NANAGOM MD — SQUARE IMAGE RATIO FIX
+   ===================================== */
+
+/* A와 B를 가로로 나란히 */
+.nanagom-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 520px)) !important;
+    justify-content: center;
+    align-items: start;
+    gap: 24px;
+}
+
+/* 각 카드 */
+.nanagom-card {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* 이미지 칸을 정사각형으로 */
+.nanagom-upload {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 1 / 1;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+    background: #fafbfc;
+    cursor: pointer;
+}
+
+/* 원본 비율 유지 — 찌그러짐 방지 */
+.nanagom-upload img {
+    position: absolute !important;
+    inset: 0;
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain !important;
+    object-position: center center;
+    padding: 0 !important;
+    margin: 0;
+}
+
+/* 업로드 안내 문구 */
+.nanagom-upload .placeholder {
+    padding: 16px;
+    color: #9ba7b8;
+    text-align: center;
+    font-size: 12px;
+    line-height: 2;
+}
+
+.nanagom-upload .placeholder strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+/* 휴대폰에서도 두 칸을 가로로 배치 */
+@media (max-width: 800px) {
+    .nanagom-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px;
+    }
+
+    .nanagom-section {
+        padding: 8px;
+    }
+
+    .nanagom-upload {
+        width: 100%;
+        height: auto !important;
+        min-height: 0 !important;
+        aspect-ratio: 1 / 1;
+    }
+
+    .nanagom-upload .placeholder {
+        padding: 5px;
+        font-size: 10px;
+    }
+
+    .nanagom-upload .placeholder strong {
+        font-size: 28px;
+    }
+
+    .nanagom-note {
+        padding: 6px;
+        font-size: 9px;
+    }
+}
 </style>
 </head>
 
