@@ -1211,6 +1211,87 @@ input[type="color"]::-moz-color-swatch {
         min-height: 620px !important;
     }
 }
+/* ===== NANAGOM FIX: A/B 나란히, 이미지 비율 유지 ===== */
+
+.nanagom-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+    align-items: start !important;
+}
+
+.nanagom-card {
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+.nanagom-upload {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 1 / 1 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    position: relative !important;
+    background: #fafbfc !important;
+}
+
+.nanagom-upload img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    padding: 8px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+}
+
+/* 자료 칸 2000 × 2000 비율 유지 */
+
+.bottom-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.bottom-grid > .assets-panel:nth-child(2) {
+    display: none !important;
+}
+
+.bottom-grid .upload-box {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 1 / 1 !important;
+}
+
+.bottom-grid .upload-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+}
+
+/* KEY COLOR 영역 제거 */
+
+.relationship > div:has(> .section-title + .color-palette) {
+    display: none !important;
+}
+
+/* 휴대폰에서도 나나곰 두 칸 유지 */
+
+@media (max-width: 800px) {
+    .nanagom-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
+
+    .nanagom-upload {
+        height: auto !important;
+        min-height: 0 !important;
+        aspect-ratio: 1 / 1 !important;
+    }
+}
 </style>
 </head>
 
